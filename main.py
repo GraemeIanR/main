@@ -23,6 +23,16 @@ class Player():
         self.speed = speed
         self.focus_speed = focus_speed
 
+class Enemy():
+    def __init__(self, type, hurtbox):
+        self.type = type
+        self.hurtbox = hurtbox
+
+class Bullet():
+    def __init__(self, hitbox, sprite):
+        self.hitbox = hitbox
+        self.sprite = sprite
+
 player_hitbox = pygame.draw.circle(window, ("#ffffff"), (300,600), 4)
 
 def draw():
@@ -208,6 +218,8 @@ while Menu == True:
     pygame.display.update()
     clock.tick(60)
 
+stage = 1
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -260,6 +272,13 @@ while True:
             player_hitbox.x -= Character.focus_speed
         if keys[pygame.K_RIGHT]:
             player_hitbox.x += Character.focus_speed
+
+        while stage == 1:
+            if clock.tick() - 1800 > 0:
+                pass
+
+            elif clock.tick() - 1800 < 0:
+                pass
 
     draw()
     pygame.display.update()
